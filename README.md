@@ -10,3 +10,4 @@
 - expo install expo-file-system
 - expo install expo-sqlite
 - expo install expo-location
+- expo install react-native-maps
