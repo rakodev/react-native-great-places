@@ -4,3 +4,4 @@
 - expo install react-native-gesture-handler react-native-reanimated
 - npm install --save react-navigation-header-buttons
 - npm install --save @expo/vector-icons
+- npm install --save redux react-redux redux-thunk

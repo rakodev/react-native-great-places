@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   ScrollView,
   View,
@@ -6,16 +6,25 @@ import {
   Text,
   TextInput,
   StyleSheet
-} from 'react-native';
+} from "react-native";
+import { useDispatch } from "react-redux";
 
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
+import * as placesActions from "../store/places-actions";
 
 const NewPlaceScreen = props => {
-  const [titleValue, setTitleValue] = useState('');
+  const [titleValue, setTitleValue] = useState("");
+
+  const dispatch = useDispatch();
 
   const titleChangeHandler = text => {
     // you could add validation
     setTitleValue(text);
+  };
+
+  const savePlaceHandler = () => {
+    dispatch(placesActions.addPlace(titleValue));
+    props.navigation.goBack();
   };
 
   return (
@@ -27,14 +36,18 @@ const NewPlaceScreen = props => {
           onChangeText={titleChangeHandler}
           value={titleValue}
         />
-        <Button title="Save Place" color={Colors.primary} onPress={() => {}} />
+        <Button
+          title="Save Place"
+          color={Colors.primary}
+          onPress={savePlaceHandler}
+        />
       </View>
     </ScrollView>
   );
 };
 
 NewPlaceScreen.navigationOptions = {
-  headerTitle: 'Add Place'
+  headerTitle: "Add Place"
 };
 
 const styles = StyleSheet.create({
@@ -46,7 +59,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   textInput: {
-    borderBottomColor: '#ccc',
+    borderBottomColor: "#ccc",
     borderBottomWidth: 1,
     marginBottom: 15,
     paddingVertical: 4,
