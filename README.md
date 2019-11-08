@@ -9,3 +9,4 @@
 - expo install expo-permissions
 - expo install expo-file-system
 - expo install expo-sqlite
+- expo install expo-location
